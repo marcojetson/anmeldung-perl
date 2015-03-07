@@ -32,7 +32,7 @@ sub crawl {
     my $ua = LWP::UserAgent->new(ssl_opts => {verify_hostname => 0});
     my $response = $ua->get($url);
     if ($response->status_line ne "200 OK") {
-        die "Unable to connect";
+        return $result;
     }
 
     my $parser = XML::LibXML->new(recover => 2);
